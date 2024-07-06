@@ -1,0 +1,130 @@
+@charset "UTF-8";
+@import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Poppins", Helvetica, sans-serif;
+}
+
+.todo-card .checkbox-wrapper, .todo-card .checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-card, .todo-card .content-wrapper, .todo-card .content-wrapper .action-btns, .add-todo-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+main, .todo-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.todo-card, .add-todo-btn {
+  display: flex;
+  align-items: center;
+}
+
+main header h1, .todo-card.done .checkbox {
+  text-align: center;
+}
+
+/** HEADER TEXT SIZE */
+/** BODY TEXT SIZE */
+/** SPACING */
+/** COLORS */
+/** BREAKPOINTS */
+body {
+  background-color: #16181B;
+  color: white;
+}
+
+main {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 1024px;
+  padding: 16px;
+}
+main header {
+  padding: 16px;
+}
+.todo-wrapper {
+  gap: 8px;
+}
+
+.todo-card {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: #24272B;
+  transition: all 0.4s ease-in-out;
+}
+.todo-card .checkbox-wrapper {
+  height: 24px;
+  width: 24px;
+}
+.todo-card .checkbox {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  color: white;
+  border: 2px solid white;
+  border-radius: 100%;
+  transition: all 0.1s ease-in-out;
+}
+.todo-card .content-wrapper {
+  flex: 1;
+}
+.todo-card .content-wrapper .content {
+  flex: 1;
+}
+.todo-card .content-wrapper .content p {
+  font-size: 18px;
+  transition: all 0.1s ease-in-out;
+}
+.todo-card .content-wrapper .action-btns {
+  height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 8px;
+}
+.todo-card .content-wrapper .action-btns span {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.todo-card.done .checkbox {
+  background-color: green;
+}
+.todo-card.done .checkbox::before {
+  content: "✔";
+}
+.todo-card.done p {
+  text-decoration: line-through;
+  color: #6B7280;
+}
+
+.add-todo-btn {
+  height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 8px;
+  padding: 16px;
+  cursor: pointer;
+}/*# sourceMappingURL=app.css.map */

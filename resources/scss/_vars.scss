@@ -1,0 +1,61 @@
+
+/** HEADER TEXT SIZE */
+$header-h1: 60px;
+$header-h2: 48px;
+$header-h3: 40px;
+$header-h4: 30px;
+$header-h5: 28px;
+$header-h6: 24px;
+
+/** BODY TEXT SIZE */
+$body-large:   18px;
+$body-medium:  16px;
+$body-small:   14px;
+$body-x-small: 12px;
+
+/** SPACING */
+$ws-1:         8px;
+$ws-2:         16px;
+$ws-3:         24px;
+$ws-4:         32px;
+$ws-5:         40px;
+$ws-6:         48px;
+$ws-7:         56px;
+$ws-8:         64px;
+$ws-9:         72px;
+$ws-10:        80px;
+$ws-11:        88px;
+$ws-12:        96px;
+$ws-13:        104px;
+
+/** COLORS */
+$white:            white;
+$black:            black;
+
+$gray-1:        #111928;
+$gray-2:        #1F2A37;
+$gray-3:        #374151;
+$gray-4:        #4B5563;
+$gray-5:        #6B7280;
+$gray-6:        #9CA3AF;
+$gray-7:        #D1D5DB;
+$gray-8:        #E5E7EB;
+$gray-9:        #F9FAFB;
+$gray-10:       #F3F4F6;
+$gray-11:       #E5E7EB;
+$gray-12:       #DEE2E6;
+$gray-13:       #CED4DA;
+
+$primary-color-1:   #0C1014;
+$primary-color-2:   #16181B;
+$secondary-color-1: #24272B;
+$red-color:         #E03131;
+
+/** BREAKPOINTS */
+$bp-mobile-s:  320px;
+$bp-mobile-m:  375px;
+$bp-mobile-l:  425px;
+$bp-tablet:    768px;
+$bp-laptop:    1024px;
+$bp-laptop-l:  1440px;
+$bp-4k:        2560px;

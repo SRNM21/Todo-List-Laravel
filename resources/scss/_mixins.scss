@@ -1,0 +1,21 @@
+@mixin size($h: 0, $w: 0)
+{
+    height: $h;
+    width: $w;
+}
+
+@mixin max-size($h: 0, $w: 0)
+{
+    max-height: $h;
+    max-width: $w;
+}
+
+@mixin placeholder-color($color)
+{
+    ::-webkit-input-placeholder { color:$color; }
+    :-moz-placeholder { color: $color; opacity:  1; }
+    ::-moz-placeholder { color: $color; opacity:  1; }
+    :-ms-input-placeholder { color: $color; }
+    ::-ms-input-placeholder { color: $color; }
+    ::placeholder { color: $color; }
+}

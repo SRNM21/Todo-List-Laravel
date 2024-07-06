@@ -1,0 +1,148 @@
+@use '_reset';
+@use '_placeholder';
+@use '_vars' as var;
+@use '_mixins' as mix;
+
+body
+{
+    @extend %flex-center-hr;
+    background-color: var.$primary-color-2;
+    color: var.$white;
+}
+
+main
+{
+    @extend %flex-col;
+    @include mix.size(fit-content, var.$bp-laptop);
+    padding: var.$ws-2;
+
+    header
+    {
+        padding: var.$ws-2;
+
+        h1
+        {
+            @extend %text-center;
+        }
+    }
+}
+
+.todo-wrapper
+{
+    @extend %flex-col;
+    gap: var.$ws-1;
+}
+
+.todo-card
+{
+    @include mix.size(fit-content, 100%);
+    @extend %flex-row;
+    @extend %flex-center-vr;
+    gap: var.$ws-2;
+    padding: var.$ws-2;
+    border-radius: calc(var.$ws-1 / 2);
+    background-color: var.$secondary-color-1;
+    transition: all 0.4s ease-in-out;   
+
+    .checkbox-wrapper
+    {
+        @include mix.size(var.$ws-3, var.$ws-3);
+        @extend %flex-center;
+    }
+
+    .checkbox
+    {
+        @include mix.size(100%, 100%);
+        @extend %flex-center;
+        cursor: pointer;
+        color: var.$white;
+        border: 2px solid var.$white;
+        border-radius: 100%;
+        transition: all 0.10s ease-in-out;
+    }
+
+    .content-wrapper
+    {
+        @extend %flex-row;
+        flex: 1;
+
+        .content
+        {
+            flex: 1;
+
+            p
+            {
+                font-size: var.$body-large;
+                transition: all 0.10s ease-in-out;
+            }
+        }
+
+        .action-btns
+        {
+            @include mix.size(100%, fit-content);
+            @extend %flex-row;
+            gap: var.$ws-1;
+
+            span
+            {
+                @include mix.size(var.$ws-3, var.$ws-3);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.todo-card.done
+{
+    .checkbox
+    {
+        @extend %text-center;
+        background-color: green;
+    }
+
+    .checkbox::before 
+    {
+        content: '✔';
+    }
+
+    p
+    {
+        text-decoration: line-through;
+        color: var.$gray-5;
+    }
+}
+
+.add-todo-btn
+{
+    @include mix.size(100%, 100%);
+    @extend %flex-center-vr;
+    @extend %flex-row;
+    gap: var.$ws-1;
+    padding: var.$ws-2;
+
+    svg
+    {
+        @include mix.size(var.$ws-3, var.$ws-3);
+        aspect-ratio: 1/1;
+    }
+}
+
+.new-todo-form
+{
+    @include mix.size(100%, 100%);
+    @extend %flex-row;
+    justify-content: space-between;
+
+    .todo-input
+    {
+        @include mix.placeholder-color(var.$gray-5);
+        color: var.$white;
+        background-color: transparent;
+        padding: var.$ws-1;
+        border: none;
+        outline: none;
+        font-size: var.$body-large;
+        font-family: 'Poppins', Helvetica, sans-serif;
+        flex: 1;
+    }
+}
