@@ -2,6 +2,8 @@ import './bootstrap'
 import jQuery from 'jquery'
 window.$ = jQuery
 
+const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
+const ADD_TASK = 'ADD_TASK'
 const TOGGLE_TASK = 'TOGGLE_TASK'
 const DELETE_TASK = 'DELETE_TASK'
 
@@ -11,30 +13,19 @@ $('div').on('click', '.checkbox', function (e)
     e.stopImmediatePropagation()
     
     let card = $(this).parents('.todo-card')
-
-    let id = card.data('id')
     let status = card.data('status')
 
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/',
-        method: 'POST',
-        data: {
+    ajax(
+        {
             'func': TOGGLE_TASK,
-            'id': id,
+            'id': card.data('id'),
             'status': status 
         },
-        success: function()
+        function()
         {
             togglePending(card, status, status === 'done' ? 'pending' : 'done')
-        },
-        error: function (error) 
-        {  
-            console.error(error)
         }
-    })
+    )
 })
 
 function togglePending(card, status, newStatus) 
@@ -51,19 +42,12 @@ $('div').on('click', '.delete-btn', function (e)
 
     let card = $(this).parents('.todo-card')
 
-    let id = card.data('id')
-
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/',
-        method: 'POST',
-        data: {
+    ajax(
+        {
             'func': DELETE_TASK,
-            'id': id,
+            'id': card.data('id'),
         },
-        success: function()
+        function()
         {
             card.animate({
                 opacity: '0',
@@ -81,35 +65,38 @@ $('div').on('click', '.delete-btn', function (e)
                     card.remove()
                 } 
             }) 
-        },
-        error: function (error) 
-        {  
-            console.error(error)
         }
-    })
+    )
 })
 
 $('.new-todo-form').on('submit', function (e) 
 {
     e.preventDefault()
 
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/add-todo',
-        method: 'POST',
-        data: {
+    ajax(
+        {
+            'func': ADD_TASK,
             'new_todo': $('.todo-input').val(),
         },
-        success: function(response)
+        function(response)
         {
             $('.todo-wrapper').append(response)
             $('.todo-input').val('')
-        },
+        }
+    )
+})
+
+function ajax(data, onSuccess)
+{
+    $.ajax({
+        headers: { 'X-CSRF-TOKEN': CSRF_TOKEN },
+        url: '/',
+        method: 'POST',
+        data: data,
+        success: onSuccess,
         error: function (error) 
         {  
             console.error(error)
         }
     })
-})
+}

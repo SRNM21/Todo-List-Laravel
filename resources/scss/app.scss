@@ -12,8 +12,9 @@ body
 
 main
 {
-    @extend %flex-col;
-    @include mix.size(fit-content, var.$bp-laptop);
+    @include mix.size(100dvh, 100dvw);
+    @extend %flex-col;    
+    @extend %flex-center-vr;
     padding: var.$ws-2;
 
     header
@@ -29,8 +30,11 @@ main
 
 .todo-wrapper
 {
+    @include mix.size(100%, 100%);
     @extend %flex-col;
+    max-width: var.$bp-laptop;
     gap: var.$ws-1;
+    overflow-y: scroll;
 }
 
 .todo-card
@@ -48,6 +52,7 @@ main
     {
         @include mix.size(var.$ws-3, var.$ws-3);
         @extend %flex-center;
+        aspect-ratio: 1/1;
     }
 
     .checkbox
@@ -61,33 +66,29 @@ main
         transition: all 0.10s ease-in-out;
     }
 
-    .content-wrapper
+    .content
     {
-        @extend %flex-row;
         flex: 1;
 
-        .content
+        p
         {
-            flex: 1;
-
-            p
-            {
-                font-size: var.$body-large;
-                transition: all 0.10s ease-in-out;
-            }
+            font-size: var.$body-large;
+            word-wrap: break-word;
+            transition: all 0.10s ease-in-out;
         }
+    }
 
-        .action-btns
+    .action-btns
+    {
+        @include mix.size(100%, fit-content);
+        @extend %flex-row;
+        @extend %flex-center;
+        gap: var.$ws-1;
+
+        span
         {
-            @include mix.size(100%, fit-content);
-            @extend %flex-row;
-            gap: var.$ws-1;
-
-            span
-            {
-                @include mix.size(var.$ws-3, var.$ws-3);
-                cursor: pointer;
-            }
+            @include mix.size(var.$ws-3, var.$ws-3);
+            cursor: pointer;
         }
     }
 }
@@ -114,7 +115,6 @@ main
 
 .add-todo-btn
 {
-    @include mix.size(100%, 100%);
     @extend %flex-center-vr;
     @extend %flex-row;
     gap: var.$ws-1;
@@ -125,24 +125,25 @@ main
         @include mix.size(var.$ws-3, var.$ws-3);
         aspect-ratio: 1/1;
     }
-}
 
-.new-todo-form
-{
-    @include mix.size(100%, 100%);
-    @extend %flex-row;
-    justify-content: space-between;
-
-    .todo-input
+    .new-todo-form
     {
-        @include mix.placeholder-color(var.$gray-5);
-        color: var.$white;
-        background-color: transparent;
-        padding: var.$ws-1;
-        border: none;
-        outline: none;
-        font-size: var.$body-large;
-        font-family: 'Poppins', Helvetica, sans-serif;
+        @extend %flex-row;
         flex: 1;
+
+        .todo-input
+        {
+            @include mix.size(100%, 100%);
+            @include mix.placeholder-color(var.$gray-5);
+            color: var.$white;
+            background-color: transparent;
+            padding: var.$ws-1;
+            border: none;
+            outline: none;
+            font-size: var.$body-large;
+            font-family: 'Poppins', Helvetica, sans-serif;
+        }
     }
 }
+
+
